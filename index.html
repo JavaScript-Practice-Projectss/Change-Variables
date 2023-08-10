@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS challenge # 3</title>
+</head>
+<body>
+   <div class="controls">
+    <h2>Update CSS variables with <span class="hl">JS</span></h2>
+    <label for="spacing">Spacing</label>
+    <input type="range" class="custom-range" name="spacing" id="" min="10" max="200" value="10" data-sizing="px">
+    <label for="blur">Blur</label>
+    <input type="range" class="custom-range" name="blur" id="" min="0" max="25" value="10" data-sizing="px">
+    <label for="base">Color</label>
+    <input type="color" name="base" value="#ffc600">
+   </div>
+    <img src="./david-clode-Ws6Tb1cI0co-unsplash.jpg" alt="" height="500px" width="400px">
+    <script>
+    const inputs = document.querySelectorAll('.controls input');
+    function handle(){
+        const suffix = this.dataset.sizing || ''; //it has the value of data-sizing="px" mean suffix = px or just nothing ie for colors etc 
+        document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);//set the value of corresponding variable to the input value
+    }
+    inputs.forEach(input => input.addEventListener('change',handle))
+    </script>
+</body>
+</html>
